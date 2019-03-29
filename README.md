@@ -19,6 +19,14 @@ Criar uma aplicação web de todo-list no qual deverá adicionar e remove itens 
 * Front-end usando HTML, CSS e JS
 * Conexão do front-end com uma API/WebService feita em PHP
 
+### **Diferencial** ###
+
+Para melhorar a aplicação e ser um diferencial de desenvolvimento, implemente uma autenticação com:
+
+* Cadastro de usuário: email e senha
+* Formulário de Login
+* Todo-list unico para cada usuário logado.
+
 
 ### **Sugestões** ###
 
