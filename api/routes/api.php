@@ -13,6 +13,23 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::get('/', function () {
+    return response()->json([
+        'data' => [
+            'message' => "Wellcome to TODO list API!"
+        ]
+    ]);
 });
+
+Route::middleware('auth:api')->group(function() {
+    Route::get('/user', function (Request $request) {
+        return $request->user();
+    });
+
+    Route::get('/todo', 'Api\TodoController@index');
+    Route::post('/todo', 'Api\TodoController@store');
+    Route::delete('/todo/{id}', 'Api\TodoController@destroy');
+});
+
+Route::post('/register', 'Api\AuthController@register');
+Route::post('/login', 'Api\AuthController@login');
