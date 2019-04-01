@@ -14,7 +14,7 @@ import './assets/style.css'
 ReactDOM.render(
     <Provider store={store}>
         <Router history={history}>
-            <div class="container d-flex w-100 h-100 p-3 flex-column text-center">
+            <div className="container d-flex w-100 h-100 p-3 flex-column text-center">
                 <Header />
 
                 <Switch>
