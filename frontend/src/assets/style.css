@@ -1,0 +1,19 @@
+html,
+body,
+body #root {
+    height: 100%;
+}
+
+@media (min-width: 48em) {
+    .brand {
+        float: left;
+    }
+
+    .nav {
+        float: right;
+    }
+}
+
+hr {
+    background: #e4e4e4
+}
