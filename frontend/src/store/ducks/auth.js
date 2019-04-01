@@ -1,7 +1,9 @@
 // store/ducks/auth.js
 
-import api from "../../services/api";
+import api from "../../services/api"
 import history from '../../config'
+
+import { clearTodos } from './todo'
 
 // Action Types
 
@@ -11,7 +13,7 @@ export const Types = {
     REGISTER_FAIL: 'auth/REGISTER_FAIL',
     PASSWORD_FAIL: 'auth/PASSWORD_FAIL',
     LOGOUT: 'auth/LOGOUT',
-};
+}
 
 // Reducer
 
@@ -20,7 +22,7 @@ const initialState = {
     errorRegister: false,
     message: "",
     isAuth: false
-};
+}
 
 export default function reducer(state = initialState, action) {
     switch (action.type) {
@@ -51,16 +53,16 @@ export default function reducer(state = initialState, action) {
                 errorRegister: true,
                 message: action.payload,
                 isAuth: false
-            };
+            }
         case Types.LOGOUT:
             return {
                 errorLogin: false,
                 errorRegister: false,
                 message: action.payload,
                 isAuth: false
-            };
+            }
         default:
-            return state;
+            return state
     }
 }
 
@@ -75,7 +77,7 @@ export const register = (name, email, password) => {
                     payload: response.data.message
                 })
 
-                sessionStorage.setItem('access_token', response.data.return.access_token);
+                sessionStorage.setItem('access_token', response.data.return.access_token)
                 history.push('/')
             })
             .catch(error => {
@@ -83,9 +85,9 @@ export const register = (name, email, password) => {
                     type: Types.REGISTER_FAIL,
                     payload: error.response.data.message
                 })
-            });
+            })
     }
-};
+}
 
 export const login = (email, password) => {
     return (dispatch) => {
@@ -96,7 +98,7 @@ export const login = (email, password) => {
                     payload: response.data.message
                 })
 
-                sessionStorage.setItem('access_token', response.data.return.access_token);
+                sessionStorage.setItem('access_token', response.data.return.access_token)
                 history.push('/')
             })
             .catch(error => {
@@ -105,18 +107,20 @@ export const login = (email, password) => {
                     type: Types.LOGIN_FAIL,
                     payload: error.response.data.message
                 })
-            });
+            })
     }
-};
+}
 
 export function logout() {
     return (dispatch) => {
         sessionStorage.removeItem('access_token')
+        dispatch(clearTodos())
 
         dispatch({
             type: Types.LOGOUT,
             payload: "Logoff realizado com sucesso!"
         })
+
 
         history.push('/login')
     }
