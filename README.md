@@ -1,3 +1,33 @@
+# Projeto TODO List
+
+Instalação:
+
+- API:
+  * Ir para a pasta __api/__
+  * Rodar no terminal `composer install`
+  * Configurar __banco de dados__ no .env 
+  * Rodar no terminal `php artisan migrate`
+  * Rodar no terminal `php artisan passport:install`
+  * Criar key __APP_TOKEN=__ no .env
+  * Configurar __APP_TOKEN__ com _Password grant client_ gerado pelo `passport:install`
+
+- Front-end:
+  * Ir para a pasta __frontend/__
+  * Rodar no terminal `npm install`
+  * Configurar a URL da API em __src/services/api.js__
+  * Deploy com `npm build` no terminal
+
+Tecnologias utilizadas:
+
+- API: Laravel
+  * Autenticação com Laravel/Passport
+
+- Front-end: ReactJS
+  * Requisições para a API com `axios`
+  * Navegação com `react-router-dom`
+  * Controle de estados com `redux + redux-thunk` (utilizando `duck-patterns`)
+  * Framework CSS Bootstrap e Ícones FontAwesome
+
 # Teste para vaga de desenvolvimento web da FindUP
 
 Criar uma aplicação web de todo-list no qual deverá adicionar e remove itens da lista.
